@@ -1,0 +1,14 @@
+.Movies {
+  margin: 2rem;
+}
+.Movies .card {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+

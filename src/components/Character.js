@@ -28,10 +28,6 @@ function Character(props) {
     })
   }
 
-  // function convertHttps(str) {
-  //   return str.slice(0, 4) + 's' + str.slice(4)
-  // }
-
   useEffect(() => {
     fetchPeople();
   }, [fetchPeople])
@@ -44,7 +40,7 @@ function Character(props) {
       <Container>
         <Row>
           <Col lg={{ span: 8, offset: 2 }}>
-            <Dropdown>
+            <Dropdown className="m-4">
               <h4>Character:</h4>
               <Dropdown.Toggle id="dropdown-basic">
                 {character.name || "Select"}

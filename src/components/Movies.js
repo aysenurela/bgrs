@@ -2,7 +2,8 @@ import {getMoviesError, getMovies, getMoviesPending} from '../store/reducer';
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import Spinner from './Spinner';
-import LastMovie from './LastMovie'
+import LastMovie from './LastMovie';
+import '../styles/movies.css'
 
 function Movies(props) {
 
@@ -10,13 +11,15 @@ function Movies(props) {
     return <Spinner />
   } 
   return (
-    <div>
+    <div className="Movies">
       <h5>List of Movies:</h5>
       {props.movies ? (
-      <div className="Movies">
-        {props.movies.map((movie, ind) => {
-          return <Card key={ind}>{movie.title}</Card>        
-        })}
+      <div>
+        <div className="cards-container">
+          {props.movies.map((movie, ind) => {
+            return <Card style={{ width: '10rem' }} key={ind}>{movie.title}</Card>        
+          })}
+        </div>
         <LastMovie />
       </div>) : ''}
     </div>
