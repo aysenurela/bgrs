@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../store/reducer';
 import { Card } from 'react-bootstrap';
+import { convertDatetoNum } from '../helper';
 
 function LastMovie(props) {
 
   const [lastMovie, setLastMovie] = useState({release_date: "0"});
-
-  function convertDatetoNum(str) {
-    return parseInt(str.split("-").join(""))
-  }
 
   useEffect(() => {
     props.movies.forEach(movie => {

@@ -7,9 +7,12 @@ import fetchMoviesAction from '../store/fetchMovies';
 import { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import Movies from './Movies';
-import Spinner from './Spinner'
+import Spinner from './Spinner';
+import { convertHttps } from '../helper';
 
 function Character(props) {
+
+  const { fetchPeople = () => {} } = props
 
   const [character, setCharacter] = useState({});
 
@@ -25,13 +28,13 @@ function Character(props) {
     })
   }
 
-  function convertHttps(str) {
-    return str.slice(0, 4) + 's' + str.slice(4)
-  }
+  // function convertHttps(str) {
+  //   return str.slice(0, 4) + 's' + str.slice(4)
+  // }
 
   useEffect(() => {
-    props.fetchPeople();
-  }, [])
+    fetchPeople();
+  }, [fetchPeople])
 
   if (props.pending) {
     return <Spinner />
