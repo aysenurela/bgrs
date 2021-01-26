@@ -4,7 +4,8 @@ const initialState = {
   error: null,
   movies: [],
   pendingMovies: false,
-  errorMovies: null
+  errorMovies: null,
+  apiCompleted: false
 };
 
 export default initialState;

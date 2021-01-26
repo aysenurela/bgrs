@@ -1,13 +1,12 @@
-import {fetchPeoplePending, fetchPeopleSuccess, fetchPeopleError} from './actions';
-import { convertHttps } from '../helper';
+import {fetchPeoplePending, fetchPeopleSuccess, fetchPeopleError, apiCompleted} from './actions';
 
 let fetchedPeople = [];
-let url = 'https://swapi.dev/api/people/';
 
-function fetchPeople() {
+function fetchPeople(pageNum) {
+  let url = `https://swapi.dev/api/people/?page=${pageNum}`;
+
   return async dispatch => {
     dispatch(fetchPeoplePending());
-    do {
       try {
         const response = await fetch(url, {
           method: 'GET',   
@@ -15,12 +14,11 @@ function fetchPeople() {
         });
         const data = await response.json();
         fetchedPeople.push(...data.results);
-        url = data.next ? convertHttps(data.next) : '';
+        if (!data.next) dispatch(apiCompleted())
       } 
       catch (error) {
         dispatch(fetchPeopleError(error));
       }
-    } while (url)
 
     dispatch(fetchPeopleSuccess(fetchedPeople));
   }

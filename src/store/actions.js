@@ -5,7 +5,9 @@ export const FETCH_PEOPLE_ERROR = 'FETCH_PEOPLE_ERROR';
 export const FETCH_MOVIES_PENDING = 'FETCH_MOVIES_PENDING';
 export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
 export const FETCH_MOVIES_ERROR = 'FETCH_MOVIES_ERROR';
-export const CLEAR_MOVIES = 'CLEAR_MOVIES'
+export const CLEAR_MOVIES = 'CLEAR_MOVIES';
+
+export const API_COMPLETED = 'API_COMPLETED';
 
 export function fetchPeoplePending() {
     return {
@@ -50,5 +52,11 @@ export function fetchMoviesError(error) {
 export function clearMovies() {
     return {
         type: CLEAR_MOVIES
+    }
+}
+
+export function apiCompleted() {
+    return {
+        type: API_COMPLETED
     }
 }

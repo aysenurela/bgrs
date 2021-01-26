@@ -7,7 +7,8 @@ import {
   FETCH_MOVIES_PENDING, 
   FETCH_MOVIES_SUCCESS, 
   FETCH_MOVIES_ERROR,
-  CLEAR_MOVIES
+  CLEAR_MOVIES,
+  API_COMPLETED
 } from './actions';
 
 export function reducer(state = initialState, action) {
@@ -59,6 +60,12 @@ export function reducer(state = initialState, action) {
         movies: []
       }
 
+    case API_COMPLETED:
+      return {
+        ...state,
+        apiCompleted: true
+      }
+
     default:
       return state;
   }
@@ -71,3 +78,5 @@ export const getPeopleError = state => state.error;
 export const getMovies = state => state.movies;
 export const getMoviesPending = state => state.pendingMovies;
 export const getMoviesError = state => state.errorMovies;
+
+export const isApiCompleted = state => state.apiCompleted;
